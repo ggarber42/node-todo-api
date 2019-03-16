@@ -1,14 +1,6 @@
 const mongoose = require('mongoose');
-const db = require('.././config/keys').mongoURI;
 mongoose.Promise = global.Promise;
 
-// mongoose.connect('mongodb://localhost:27017/TodoApp');
-
-mongoose
-  .connect(db)
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
-
-
+mongoose.connect( process.env.MONGODB_URI ||'mongodb://localhost:27017/TodoApp');
 
 module.exports = {mongoose};
